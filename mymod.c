@@ -1,4 +1,5 @@
 #include <emacs-module.h>
+#include <assert.h>
 
 /* Declare mandatory GPL symbol.  */
 int plugin_is_GPL_compatible;
@@ -13,7 +14,7 @@ Fmod_test_return_t (emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *d
 static emacs_value
 Fmod_test_mul_a_b (emacs_env *env, ptrdiff_t nargs, emacs_value args[], void *data)
 {
-  asset (nargs == 2);
+  assert (nargs == 2);
   intmax_t a = env->extract_integer (env, args[0]);
   intmax_t b = env->extract_integer (env, args[1]);
 
